@@ -1,1 +1,0 @@
-git push origin your-branch-name.
