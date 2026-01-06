@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body, .container {
+      height: 100%;
+      width: 100%;
+    }
+
+    .container {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px 20px;
+      overflow-auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .form-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #2d3748;
+      margin: 0 0 30px 0;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .success-message {
+      background: #48bb78;
+      color: white;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 600;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .data-display-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .data-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2d3748;
+      margin: 0 0 24px 0;
+      text-align: center;
+    }
+
+    .data-row {
+      display: flex;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #f7fafc;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+
+    .data-label {
+      font-weight: 600;
+      color: #4a5568;
+      min-width: 140px;
+      font-size: 14px;
+    }
+
+    .data-value {
+      color: #2d3748;
+      flex: 1;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #a0aec0;
+      font-style: italic;
+      padding: 40px 20px;
+    }
+
+    @media (max-width: 768px) {
+      .form-card, .data-display-card {
+        padding: 24px;
+      }
+
+      .form-title {
+        font-size: 24px;
+      }
+
+      .data-row {
+        flex-direction: column;
+      }
+
+      .data-label {
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="form-card">
+    <h1 class="form-title" id="formTitle">Student Registration</h1>
+    <form id="registrationForm">
+     <div class="form-group"><label for="name" id="nameLabel">Name</label> <input type="text" id="name" placeholder="Enter your full name">
+     </div>
+     <div class="form-group"><label for="email" id="emailLabel">Email</label> <input type="email" id="email" placeholder="Enter your email address">
+     </div>
+     <div class="form-group"><label for="registerNo" id="registerLabel">Registration Number</label> <input type="text" id="registerNo" placeholder="Enter your registration number">
+     </div>
+     <div class="form-group"><label for="branch" id="branchLabel">Branch</label> <select id="branch"> <option value="">Select your branch</option> <option value="Computer Science">Computer Science</option> <option value="Information Technology">Information Technology</option> <option value="Electronics">Electronics</option> <option value="Mechanical">Mechanical</option> <option value="Civil">Civil</option> <option value="Electrical">Electrical</option> </select>
+     </div>
+     <div class="form-group"><label for="password" id="passwordLabel">Password</label> <input type="password" id="password" placeholder="Enter your password">
+     </div><button type="submit" class="submit-btn">Submit Registration</button>
+    </form>
+   </div>
+   <div class="data-display-card">
+    <h2 class="data-title">Form Data Preview</h2>
+    <div id="dataDisplay">
+     <div class="empty-state">
+      Start filling the form to see data appear here...
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      form_title: "Student Registration",
+      name_label: "Name",
+      email_label: "Email",
+      register_label: "Registration Number",
+      branch_label: "Branch",
+      password_label: "Password"
+    };
+
+    const formData = {
+      name: '',
+      email: '',
+      registerNo: '',
+      branch: '',
+      password: ''
+    };
+
+    function updateDataDisplay() {
+      const dataDisplay = document.getElementById('dataDisplay');
+      const hasData = formData.name || formData.email || formData.registerNo || formData.branch || formData.password;
+
+      if (!hasData) {
+        dataDisplay.innerHTML = '<div class="empty-state">Start filling the form to see data appear here...</div>';
+        return;
+      }
+
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+
+      dataDisplay.innerHTML = `
+        ${formData.name ? `
+          <div class="data-row">
+            <div class="data-label">${config.name_label || defaultConfig.name_label}:</div>
+            <div class="data-value">${formData.name}</div>
+          </div>
+        ` : ''}
+        
+        ${formData.email ? `
+          <div class="data-row">
+            <div class="data-label">${config.email_label || defaultConfig.email_label}:</div>
+            <div class="data-value">${formData.email}</div>
+          </div>
+        ` : ''}
+        
+        ${formData.registerNo ? `
+          <div class="data-row">
+            <div class="data-label">${config.register_label || defaultConfig.register_label}:</div>
+            <div class="data-value">${formData.registerNo}</div>
+          </div>
+        ` : ''}
+        
+        ${formData.branch ? `
+          <div class="data-row">
+            <div class="data-label">${config.branch_label || defaultConfig.branch_label}:</div>
+            <div class="data-value">${formData.branch}</div>
+          </div>
+        ` : ''}
+        
+        ${formData.password ? `
+          <div class="data-row">
+            <div class="data-label">${config.password_label || defaultConfig.password_label}:</div>
+            <div class="data-value">${'•'.repeat(formData.password.length)}</div>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    document.getElementById('name').addEventListener('input', (e) => {
+      formData.name = e.target.value;
+      updateDataDisplay();
+    });
+
+    document.getElementById('email').addEventListener('input', (e) => {
+      formData.email = e.target.value;
+      updateDataDisplay();
+    });
+
+    document.getElementById('registerNo').addEventListener('input', (e) => {
+      formData.registerNo = e.target.value;
+      updateDataDisplay();
+    });
+
+    document.getElementById('branch').addEventListener('change', (e) => {
+      formData.branch = e.target.value;
+      updateDataDisplay();
+    });
+
+    document.getElementById('password').addEventListener('input', (e) => {
+      formData.password = e.target.value;
+      updateDataDisplay();
+    });
+
+    document.getElementById('registrationForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const successMsg = document.createElement('div');
+      successMsg.className = 'success-message';
+      successMsg.textContent = '✓ Registration submitted successfully!';
+      
+      const formCard = document.querySelector('.form-card');
+      const existingMsg = formCard.querySelector('.success-message');
+      if (existingMsg) {
+        existingMsg.remove();
+      }
+      
+      formCard.appendChild(successMsg);
+      
+      setTimeout(() => {
+        successMsg.remove();
+      }, 3000);
+    });
+
+    async function onConfigChange(config) {
+      document.getElementById('formTitle').textContent = config.form_title || defaultConfig.form_title;
+      document.getElementById('nameLabel').textContent = config.name_label || defaultConfig.name_label;
+      document.getElementById('emailLabel').textContent = config.email_label || defaultConfig.email_label;
+      document.getElementById('registerLabel').textContent = config.register_label || defaultConfig.register_label;
+      document.getElementById('branchLabel').textContent = config.branch_label || defaultConfig.branch_label;
+      document.getElementById('passwordLabel').textContent = config.password_label || defaultConfig.password_label;
+      
+      updateDataDisplay();
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["form_title", config.form_title || defaultConfig.form_title],
+          ["name_label", config.name_label || defaultConfig.name_label],
+          ["email_label", config.email_label || defaultConfig.email_label],
+          ["register_label", config.register_label || defaultConfig.register_label],
+          ["branch_label", config.branch_label || defaultConfig.branch_label],
+          ["password_label", config.password_label || defaultConfig.password_label]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b9bac12f63ad821',t:'MTc2NzcwNzI5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
